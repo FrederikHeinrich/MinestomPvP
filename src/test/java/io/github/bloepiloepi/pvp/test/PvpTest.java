@@ -97,6 +97,7 @@ public class PvpTest {
 			
 			event.getPlayer().setPermissionLevel(4);
 			event.getPlayer().addEffect(new Potion(PotionEffect.REGENERATION, (byte) 10, CustomPotionEffect.PERMANENT));
+
 		});
 		
 //		LegacyKnockbackSettings settings = LegacyKnockbackSettings.builder()
@@ -143,6 +144,6 @@ public class PvpTest {
 		
 		OpenToLAN.open();
 		
-		server.start("localhost", 25565);
+		server.start("0.0.0.0", 0);
 	}
 }
