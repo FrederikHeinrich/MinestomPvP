@@ -1,6 +1,7 @@
 package io.github.bloepiloepi.pvp.events;
 
 import net.minestom.server.coordinate.Point;
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.event.trait.CancellableEvent;
 import net.minestom.server.event.trait.InstanceEvent;
 import net.minestom.server.instance.Instance;
@@ -14,12 +15,14 @@ import java.util.List;
 public class ExplosionEvent implements InstanceEvent, CancellableEvent {
 	private final Instance instance;
 	private final List<Point> affectedBlocks;
+	private final Pos pos;
 	
 	private boolean cancelled;
 	
-	public ExplosionEvent(@NotNull Instance instance, @NotNull List<Point> affectedBlocks) {
+	public ExplosionEvent(@NotNull Instance instance, @NotNull List<Point> affectedBlocks, Pos pos) {
 		this.instance = instance;
 		this.affectedBlocks = affectedBlocks;
+		this.pos = pos;
 	}
 	
 	/**
@@ -36,7 +39,11 @@ public class ExplosionEvent implements InstanceEvent, CancellableEvent {
 	public @NotNull Instance getInstance() {
 		return instance;
 	}
-	
+
+	public @NotNull Pos getPos() {
+		return pos;
+	}
+
 	@Override
 	public boolean isCancelled() {
 		return cancelled;

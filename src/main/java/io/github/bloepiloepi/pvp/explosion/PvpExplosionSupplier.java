@@ -8,6 +8,7 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.collision.BoundingBox;
 import net.minestom.server.collision.CollisionUtils;
 import net.minestom.server.coordinate.Point;
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
@@ -93,7 +94,7 @@ public final class PvpExplosionSupplier implements ExplosionSupplier {
 				}
 				
 				// Blocks list may be modified during the event call
-				ExplosionEvent explosionEvent = new ExplosionEvent(instance, blocks);
+				ExplosionEvent explosionEvent = new ExplosionEvent(instance, blocks, new Pos(getCenterX(), getCenterY(), getCenterZ()));
 				EventDispatcher.call(explosionEvent);
 				if (explosionEvent.isCancelled()) return null;
 				
